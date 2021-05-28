@@ -1,0 +1,24 @@
+[providers.docker]
+  endpoint = "unix:///var/run/docker.sock"
+
+[api]
+  dashboard = true
+  insecure = true
+
+[entryPoints]
+  [entryPoints.web]
+    address = ":80"
+  [entryPoints.web-secure]
+    address = ":443"
+[log]
+  level = "DEBUG"
+  filePath = "/log/traefik.log"
+[certificatesResolvers]
+  [certificatesResolvers.default.acme]
+#    For testing you can use Staging Let's enscript server
+#    caserver = "https://acme-staging-v02.api.letsencrypt.org/directory"
+
+#     specific your email here: 
+      email = "your email"
+      storage = "acme.json"
+    [certificatesResolvers.default.acme.tlsChallenge]
